@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZS Water</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        /* GOOGLE FONT */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        /* RESET */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Poppins', sans-serif;
+            background:#fff;
+        }
+
+        /* NAVBAR */
+        .navbar{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 50px;
+            background:rgba(0,0,0,0.35);
+            backdrop-filter:blur(10px);
+            z-index:1000;
+        }
+
+        /* LOGO */
+        .logo img{
+            width:110px;
+        }
+
+        /* NAV LINKS */
+        .nav-links{
+            display:flex;
+            gap:25px;
+        }
+
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            font-size:16px;
+            font-weight:500;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+            color:#00bfff;
+        }
+
+        /* HERO */
+        .hero{
+            height:100vh;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)),
+
+            url('https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=1400');
+
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+
+            color:white;
+        }
+
+        .content{
+            background:rgba(0,0,0,0.45);
+            padding:55px;
+            border-radius:25px;
+            backdrop-filter:blur(8px);
+            box-shadow:0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .content h1{
+            font-size:75px;
+            margin-bottom:15px;
+        }
+
+        .content p{
+            font-size:22px;
+            margin-bottom:30px;
+        }
+
+        /* BUTTON */
+        .btn{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+
+            background:linear-gradient(45deg,#00bfff,#0077ff);
+
+            color:white;
+
+            padding:14px 38px;
+
+            text-decoration:none;
+
+            border-radius:40px;
+
+            font-size:18px;
+            font-weight:bold;
+
+            transition:0.3s;
+
+            box-shadow:0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover{
+            transform:translateY(-5px);
+            background:white;
+            color:#0077ff;
+        }
+
+        /* ABOUT */
+        .about{
+            padding:100px 20px;
+            text-align:center;
+            background:#f7f7f7;
+        }
+
+        .about h2{
+            font-size:42px;
+            margin-bottom:20px;
+            color:#0077ff;
+        }
+
+        .about p{
+            max-width:750px;
+            margin:auto;
+            font-size:18px;
+            line-height:1.9;
+            color:#444;
+        }
+
+        /* PRODUCTS */
+        .products{
+            padding:100px 20px;
+            text-align:center;
+        }
+
+        .products h2{
+            font-size:42px;
+            margin-bottom:50px;
+            color:#0077ff;
+        }
+
+        .product-container{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .box{
+            width:300px;
+            background:white;
+            padding:35px;
+            border-radius:20px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .box:hover{
+            transform:translateY(-10px);
+        }
+
+        .box img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+            border-radius:15px;
+            margin-bottom:20px;
+        }
+
+        .box h3{
+            margin-bottom:15px;
+            color:#0077ff;
+            font-size:26px;
+        }
+
+        .box p{
+            color:#555;
+            line-height:1.7;
+        }
+
+        /* CUSTOM STICKER */
+        .sticker{
+            padding:100px 20px;
+            background:#f7f7f7;
+            text-align:center;
+        }
+
+        .sticker h2{
+            font-size:42px;
+            margin-bottom:20px;
+            color:#0077ff;
+        }
+
+        .sticker p{
+            max-width:700px;
+            margin:auto;
+            margin-bottom:40px;
+            color:#555;
+            line-height:1.8;
+        }
+
+        .sticker-container{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .sticker-box{
+            width:320px;
+            background:white;
+            border-radius:20px;
+            padding:30px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .sticker-box:hover{
+            transform:translateY(-10px);
+        }
+
+        .sticker-box i{
+            font-size:45px;
+            color:#0077ff;
+            margin-bottom:20px;
+        }
+
+        .sticker-box h3{
+            margin-bottom:15px;
+            color:#0077ff;
+        }
+
+        .sticker-box p{
+            font-size:16px;
+            color:#555;
+        }
+
+        /* FEATURES */
+        .features{
+            padding:100px 20px;
+            background:white;
+            text-align:center;
+        }
+
+        .features h2{
+            font-size:42px;
+            margin-bottom:50px;
+            color:#0077ff;
+        }
+
+        .feature-container{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .feature-box{
+            width:280px;
+            background:#f7f7f7;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .feature-box:hover{
+            transform:translateY(-8px);
+        }
+
+        .feature-box i{
+            font-size:40px;
+            color:#0077ff;
+            margin-bottom:20px;
+        }
+
+        .feature-box h3{
+            margin-bottom:15px;
+            color:#0077ff;
+        }
+
+        /* CONTACT */
+        .contact{
+            padding:100px 20px;
+            text-align:center;
+            background:#f7f7f7;
+        }
+
+        .contact h2{
+            font-size:42px;
+            margin-bottom:25px;
+            color:#0077ff;
+        }
+
+        .contact p{
+            font-size:19px;
+            margin:12px 0;
+            color:#444;
+        }
+
+        .contact i{
+            color:#0077ff;
+            margin-right:10px;
+        }
+
+        /* FOOTER */
+        footer{
+            background:#111;
+            color:white;
+            text-align:center;
+            padding:25px;
+        }
+
+        footer p{
+            font-size:15px;
+        }
+
+        /* MOBILE */
+        @media (max-width:768px){
+
+            .navbar{
+                padding:12px 20px;
+            }
+
+            .logo img{
+                width:80px;
+            }
+
+            .nav-links{
+                gap:12px;
+            }
+
+            .nav-links a{
+                font-size:13px;
+            }
+
+            .content{
+                padding:30px 20px;
+            }
+
+            .content h1{
+                font-size:42px;
+            }
+
+            .content p{
+                font-size:18px;
+            }
+
+            .about h2,
+            .products h2,
+            .sticker h2,
+            .features h2,
+            .contact h2{
+                font-size:30px;
+            }
+
+            .box,
+            .sticker-box,
+            .feature-box{
+                width:100%;
+                max-width:320px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <img src="logo.png" alt="ZS Water Logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#sticker">Sticker</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="content">
+
+            <h1>ZS Water</h1>
+
+            <p>Pure Water, Pure Life</p>
+
+            <a href="https://wa.me/8801783858186" class="btn" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order on WhatsApp
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <h2>About ZS Water</h2>
+
+        <p>
+            ZS Water provides pure and healthy mineral drinking water
+            for home, office, and daily use. We focus on quality,
+            freshness, and customer satisfaction to deliver safe
+            drinking water across our area.
+        </p>
+
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products" id="products">
+
+        <h2>Our Products</h2>
+
+        <div class="product-container">
+
+            <div class="box">
+                <img src="first.png" alt="250ml Bottle">
+                <h3>250ml Bottle</h3>
+                <p>Fresh pure drinking water for daily use.</p>
+            </div>
+
+            <div class="box">
+                <img src="second.png" alt="">
+                <h3>500ml Bottle</h3>
+                <p>Easy to carry fresh mineral water bottle.</p>
+            </div>
+
+            <div class="box">
+                <img src="third.png" alt="">
+                <h3>1L Bottle</h3>
+                <p>Healthy and portable mineral water bottle.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CUSTOM STICKER -->
+    <section class="sticker" id="sticker">
+
+        <h2>Customize Sticker</h2>
+
+        <p>
+            We provide custom bottle sticker printing service for shops,
+            businesses, events, and personal brands. Add your own logo,
+            name, and design on water bottles.
+        </p>
+
+        <div class="sticker-container">
+
+            <div class="sticker-box">
+                <i class="fa-solid fa-pen-ruler"></i>
+                <h3>Custom Design</h3>
+                <p>Create your own bottle sticker with your logo and brand.</p>
+            </div>
+
+            <div class="sticker-box">
+                <i class="fa-solid fa-print"></i>
+                <h3>High Quality Print</h3>
+                <p>Premium sticker print with waterproof finishing.</p>
+            </div>
+
+            <div class="sticker-box">
+                <i class="fa-solid fa-tags"></i>
+                <h3>Affordable Price</h3>
+                <p>Professional custom sticker service at affordable cost.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+
+        <h2>Why Choose Us</h2>
+
+        <div class="feature-container">
+
+            <div class="feature-box">
+                <i class="fa-solid fa-droplet"></i>
+                <h3>100% Pure Water</h3>
+                <p>Clean and healthy mineral water for everyone.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-truck"></i>
+                <h3>Fast Delivery</h3>
+                <p>Quick delivery service for home and office.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-award"></i>
+                <h3>Trusted Quality</h3>
+                <p>Maintaining quality and customer satisfaction.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            <i class="fa-solid fa-phone"></i>
+            01783858186
+        </p>
+
+        <p>
+            <i class="fa-solid fa-location-dot"></i>
+            SHAKPALA, SAJAHANPUR, BOGURA
+        </p>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>© 2026 ZS Water | All Rights Reserved</p>
+
+    </footer>
+
+</body>
+
+</html>
